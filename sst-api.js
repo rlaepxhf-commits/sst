@@ -44,7 +44,7 @@ async function liveApi(){
   try { mod = await import('/vendor/supabase.js'); }                    // 가이랩이 쓰는 것과 같은 파일 (회장님 요청)
   catch (e) {
     if (ON_GAILAB) throw e;                                              // 가이랩에서는 바깥 주소를 쓰지 않는다
-    mod = await import('https://esm.sh/@supabase/supabase-js@2.45.4');  // 컴퓨터에서 시험할 때만
+    mod = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm');  // 컴퓨터에서 시험할 때만 (가이랩 검사: jsdelivr·판 번호 고정)
   }
   const auth = { flowType:'pkce', detectSessionInUrl:false, persistSession:true, autoRefreshToken:true };
   const teacherDb = mod.createClient(URL, KEY, { auth });                                   // 가이랩 로그인을 그대로 씀
